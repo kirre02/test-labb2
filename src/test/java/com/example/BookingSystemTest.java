@@ -17,6 +17,8 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class BookingSystemTest {
+    @Mock
+    NotificationService notificationService;
 
     @Mock
     TimeProvider timeProvider;
@@ -30,6 +32,7 @@ public class BookingSystemTest {
     @Nested
     @DisplayName("Book room tests")
     class BookRoomTests {
+
         @Test
         @DisplayName("Throws error for null parameter")
         void throwsErrorForNullParameter() {
