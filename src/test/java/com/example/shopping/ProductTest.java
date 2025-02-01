@@ -31,4 +31,24 @@ class ProductTest {
         assertThrows(IllegalArgumentException.class, () -> new Product("Laptop", 1000.0, -1));
     }
 
+    // Test getter methods
+    @Test
+    void testGetName() {
+        assertEquals("Laptop", product.getName());
+    }
+
+    @Test
+    void testGetPricePerUnit() {
+        assertEquals(1000.0, product.getPricePerUnit());
+    }
+
+    @Test
+    void testGetQuantity() {
+        assertEquals(2, product.getQuantity());
+    }
+
+    @Test
+    void testGetDiscountInitiallyZero() {
+        assertEquals(0.0, product.getDiscount());
+    }
 }
