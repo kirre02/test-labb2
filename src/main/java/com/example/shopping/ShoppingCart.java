@@ -28,4 +28,7 @@ public class ShoppingCart {
         this.products.addAll(products);
     }
 
+    public void remove(String productName) {
+        products.removeIf(product -> product.getName().equalsIgnoreCase(productName));
+    }
 }

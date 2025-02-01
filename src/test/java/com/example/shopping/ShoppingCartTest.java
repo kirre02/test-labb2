@@ -40,4 +40,11 @@ class ShoppingCartTest {
         assertEquals(2, cart.size());
     }
 
+    @Test
+    void testRemoveProduct() {
+        cart.add(apple);
+        cart.remove("Apple");
+        assertNull(cart.get("Apple"));
+        assertEquals(0, cart.size());
+    }
 }
