@@ -87,4 +87,29 @@ class ProductTest {
         assertThrows(IllegalArgumentException.class, () -> product.setQuantity(-3));
     }
 
+    // Test discount handling
+    @Test
+    void testSetDiscount() {
+        product.setDiscount(20);
+        assertEquals(0.2, product.getDiscount());
+    }
+
+    @Test
+    void testSetDiscountShouldThrowExceptionWhenNegativeOrAbove100() {
+        assertThrows(IllegalArgumentException.class, () -> product.setDiscount(-10));
+        assertThrows(IllegalArgumentException.class, () -> product.setDiscount(150));
+    }
+
+    // Test total price calculation
+    @Test
+    void testGetTotalPriceWithoutDiscount() {
+        assertEquals(2000.0, product.getTotalPrice());
+    }
+
+    @Test
+    void testGetTotalPriceWithDiscount() {
+        product.setDiscount(10); // 10% discount
+        assertEquals(1800.0, product.getTotalPrice());
+    }
+
 }
