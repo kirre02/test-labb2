@@ -51,4 +51,40 @@ class ProductTest {
     void testGetDiscountInitiallyZero() {
         assertEquals(0.0, product.getDiscount());
     }
+
+    // Test setter methods
+    @Test
+    void testSetName() {
+        product.setName("Phone");
+        assertEquals("Phone", product.getName());
+    }
+
+    @Test
+    void testSetNameShouldThrowExceptionWhenEmpty() {
+        assertThrows(IllegalArgumentException.class, () -> product.setName(""));
+    }
+
+    @Test
+    void testSetPricePerUnit() {
+        product.setPricePerUnit(1500.0);
+        assertEquals(1500.0, product.getPricePerUnit());
+    }
+
+    @Test
+    void testSetPricePerUnitShouldThrowExceptionWhenZeroOrNegative() {
+        assertThrows(IllegalArgumentException.class, () -> product.setPricePerUnit(0));
+        assertThrows(IllegalArgumentException.class, () -> product.setPricePerUnit(-50));
+    }
+
+    @Test
+    void testSetQuantity() {
+        product.setQuantity(5);
+        assertEquals(5, product.getQuantity());
+    }
+
+    @Test
+    void testSetQuantityShouldThrowExceptionWhenNegative() {
+        assertThrows(IllegalArgumentException.class, () -> product.setQuantity(-3));
+    }
+
 }
