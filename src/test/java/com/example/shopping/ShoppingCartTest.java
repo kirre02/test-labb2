@@ -83,4 +83,23 @@ class ShoppingCartTest {
         assertEquals(expectedTotal, cart.calculateTotalCost(), 0.001);
     }
 
+    @Test
+    void testGetContents_EmptyCart() {
+        List<Product> contents = cart.getContents();
+        assertNotNull(contents);
+        assertTrue(contents.isEmpty(), "Cart should be empty");
+    }
+    
+    @Test
+    void testGetContents_AfterAddingProducts() {
+        cart.add(apple);
+        cart.add(banana);
+        
+        List<Product> contents = cart.getContents();
+        assertNotNull(contents);
+        assertEquals(2, contents.size(), "Cart should contain 2 products");
+        assertTrue(contents.contains(apple), "Cart should contain apple");
+        assertTrue(contents.contains(banana), "Cart should contain banana");
+    }
+
 }
