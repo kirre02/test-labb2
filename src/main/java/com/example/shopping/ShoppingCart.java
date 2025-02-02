@@ -31,4 +31,20 @@ public class ShoppingCart {
     public void remove(String productName) {
         products.removeIf(product -> product.getName().equalsIgnoreCase(productName));
     }
+    
+    public void setDiscount(double discount) {
+        if (discount < 0) {
+            throw new IllegalArgumentException("Discount must be greater than zero");
+        }
+
+        if (discount > 1) {
+            throw new IllegalArgumentException("Discount must be less than or equal to 1");
+        }
+        this.discount = discount;
+    }
+
+    public double getDiscount() {
+        return discount;
+    }
+
 }

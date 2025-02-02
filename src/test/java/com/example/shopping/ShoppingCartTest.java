@@ -47,4 +47,22 @@ class ShoppingCartTest {
         assertNull(cart.get("Apple"));
         assertEquals(0, cart.size());
     }
+
+    @Test
+    void testSetValidDiscount() {
+        cart.setDiscount(0.2);
+        assertEquals(0.2, cart.getDiscount());
+    }
+
+    @Test
+    void testSetInvalidDiscountNegative() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> cart.setDiscount(-0.1));
+        assertEquals("Discount must be greater than zero", exception.getMessage());
+    }
+
+    @Test
+    void testSetInvalidDiscountGreaterThanOne() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> cart.setDiscount(1.5));
+        assertEquals("Discount must be less than or equal to 1", exception.getMessage());
+    }
 }
