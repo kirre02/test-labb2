@@ -47,4 +47,12 @@ public class ShoppingCart {
         return discount;
     }
 
+    
+    public double calculateTotalCost() {
+        return
+                (products.stream().mapToDouble(Product::getTotalPrice).sum()) *
+                        (1 - discount);
+    }
+
+
 }

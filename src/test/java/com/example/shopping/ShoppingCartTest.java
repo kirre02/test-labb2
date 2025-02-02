@@ -65,4 +65,22 @@ class ShoppingCartTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> cart.setDiscount(1.5));
         assertEquals("Discount must be less than or equal to 1", exception.getMessage());
     }
+
+    @Test
+    void testCalculateTotalCost() {
+        cart.add(apple);
+        cart.add(banana);
+        double expectedTotal = 2.0 + 1.5; // Mocked total prices
+        assertEquals(expectedTotal, cart.calculateTotalCost(), 0.001);
+    }
+
+    @Test
+    void testCalculateTotalCostWithDiscount() {
+        cart.add(apple);
+        cart.add(banana);
+        cart.setDiscount(0.2); // 20% discount
+        double expectedTotal = (2.0 + 1.5) * 0.8; // (3.5 * 0.8) = $2.8
+        assertEquals(expectedTotal, cart.calculateTotalCost(), 0.001);
+    }
+
 }
